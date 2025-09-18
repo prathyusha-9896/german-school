@@ -126,7 +126,7 @@ const German: React.FC = () => {
                     key={i}
                     src={src}
                     alt={`Student avatar ${i + 1}`}
-                    className="h-8 w-8 rounded-full object-cover ring-2 ring-white"
+                    className="h-8 w-8 rounded-full object-cover "
                     loading={i > 1 ? "lazy" : "eager"}
                   />
                 ))}
