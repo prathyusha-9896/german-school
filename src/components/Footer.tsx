@@ -29,20 +29,20 @@ export default function Footer({
 
   return (
     <footer className="w-full bg-white">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-[120px] py-12 md:py-16">
+      <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-12 md:py-16">
         {/* Top row: headline + CTA */}
-        <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-center md:justify-between">
           <h2
-            className="text-4xl md:text-6xl font-semibold leading-[1.15]"
+            className="text-[28px] md:text-[40px] font-semibold md:leading-[50px] leading-[35px] md:text-left text-center"
             style={{ color: neutralPrimary, fontFamily: "Raveo Display, sans-serif" }}
           >
             Your Journey to German
-            <br className="hidden md:block" /> Fluency Starts Here
+            <br /> Fluency Starts Here
           </h2>
 
           <a
             href="#book-trial"
-            className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-white text-[15px] font-semibold"
+            className="inline-flex md:w-fit w-full justify-center items-center gap-2 rounded-lg px-5 py-3 text-white text-[15px] font-semibold"
             style={{ backgroundColor: brandSoft, fontFamily: "Raveo Display, sans-serif" }}
           >
             Book Free Trial Class Today
@@ -56,7 +56,7 @@ export default function Footer({
         {/* Middle: logo + newsletter + nav */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           {/* Left block (logo + newsletter) */}
-          <div className="md:col-span-7">
+          <div className="md:col-span-7 max-w-xl">
             {/* Logo */}
             <img src="/logo.svg" alt="" />
 
@@ -77,7 +77,7 @@ export default function Footer({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g., username@email.com"
-                  className="w-full rounded-2xl border bg-white px-4 py-4 pr-40 text-[15px] outline-none transition placeholder:opacity-50"
+                  className="w-full rounded-2xl border bg-white px-4 py-4 text-[15px] outline-none transition placeholder:opacity-50"
                   style={{
                     borderColor: divider,
                     fontFamily: "Raveo Display, sans-serif",
@@ -86,7 +86,7 @@ export default function Footer({
                 />
                 <button
                   type="submit"
-                  className="absolute right-2 top-2 rounded-xl px-4 py-2 text-white font-semibold"
+                  className="absolute right-2 top-2 rounded-lg px-4 py-2 text-white font-semibold"
                   style={{
                     background: brandSoft,
                     fontFamily: "Raveo Display, sans-serif",

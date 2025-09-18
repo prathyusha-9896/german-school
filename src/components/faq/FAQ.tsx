@@ -6,7 +6,7 @@ const T = {
   caption:
     "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   h2:
-    "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
+    "md:text-[40px] text-[28px] leading-[35px] md:leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
   q:
     "text-[18px] leading-[27px] font-[600] [font-family:'Raveo_Display',sans-serif]",
   a:
@@ -33,7 +33,7 @@ const FAQ: React.FC = () => {
   return (
     <section className="w-full">
       {/* Outer container — Scale/1300, side padding 120 */}
-      <div className="mx-auto max-w-5xl px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-5xl px-7 md:px-[120px] py-16 md:py-24">
         {/* Header */}
         <div className="text-center">
           <span

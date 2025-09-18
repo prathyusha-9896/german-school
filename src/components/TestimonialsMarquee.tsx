@@ -78,14 +78,14 @@ export default function TestimonialsMarquee({
   const loop = React.useMemo(() => [...cards, ...cards], [cards]);
 
   return (
-    <div className="relative mx-auto w-full max-w-[1600px] px-4 pb-24 bg-[#E4F1FE]">
+    <div className="relative mx-auto w-full max-w-[1600px] px-0 md:pb-24 pb-10 bg-[#E4F1FE]">
       {/* viewport with mask/fades */}
-      <div className="relative overflow-hidden rounded-[20px]"
+      <div className="relative overflow-hidden [--fade:0px] md:[--fade:120px]"
         style={{
-            WebkitMaskImage:
-            "linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%)",
-            maskImage:
-            "linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%)",
         }}
       >
         {/* infinite strip */}

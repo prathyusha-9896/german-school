@@ -7,7 +7,7 @@ const type = {
   caption:
     "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   h2:
-    "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif]",
+    "md:text-[40px] text-[28px] leading-[35px] md:leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif]",
   subtitle:
     "text-[20px] leading-[30px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   cta:
@@ -57,7 +57,7 @@ export default function FreeClass() {
             {/* Title */}
             <h2 className={`mt-4 ${type.h2}`} style={{ color: UI.title }}>
               {content.titleLine1}
-              <br className="hidden md:block" />
+              <br/>
               {content.titleLine2}
             </h2>
 
@@ -71,7 +71,7 @@ export default function FreeClass() {
               <button
                 type="button"
                 onClick={onCta}
-                className={`inline-flex items-center gap-1 rounded-[8px] px-4 py-3 ${type.cta}`}
+                className={`inline-flex md:w-fit w-full text-center justify-center items-center gap-1 rounded-[8px] px-4 py-3 ${type.cta}`}
                 style={{ background: UI.ctaBg, color: UI.ctaText }}
               >
                 {content.cta}

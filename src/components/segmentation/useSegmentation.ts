@@ -20,8 +20,8 @@ export default function useSegmentation() {
     successBg: '#EAF8F1',
 
     // CTA (same family as header/salebanner vibe)
-    ctaBg: '#826BFB',
-    ctaText: '#F0EFF1',
+    ctaBg: '#A190FC',
+    ctaText: '#E4F1FE',
   };
 
   const image = {

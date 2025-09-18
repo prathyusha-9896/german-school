@@ -9,22 +9,22 @@ const t = {
   caption:
     "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif] text-[#6B6A70]",
   h2:
-    "text-[40px] leading-[40px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325] text-center",
+    "md:text-[40px] text-[28px] leading-[35px] md:leading-[40px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325] text-center",
   h4:
     "text-[28px] leading-[35px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
   big:
     "text-[80px] leading-[30px] font-[500] tracking-[-0.8px] [font-family:'Raveo_Display',sans-serif]",
   body:
-    "text-[20px] leading-[30px] font-[400] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
+    "md:text-[20px] text-[14px] leading-[21px] md:leading-[30px] font-[400] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
 };
 
 /** Sticky top offsets to mimic Elementor (desktop/mobile) */
 const TOPS_DESKTOP = ["top-[210px]", "top-[350px]", "top-[220px]"];
-const TOPS_MOBILE  = ["top-[116px]",  "top-[110px]", "top-[240px]"];
+const TOPS_MOBILE  = ["top-[116px]",  "top-[130px]", "top-[240px]"];
 
 /** Overlap so cards nest under each other (tweak if you want tighter/looser) */
 const OVERLAP_DESKTOP = "md:mt-24";
-const OVERLAP_MOBILE  = "-mt-6";
+const OVERLAP_MOBILE  = "mt-20";
 
 function Card({
   tier,
@@ -41,7 +41,7 @@ function Card({
 }) {
   return (
     <div
-      className="rounded-[28px] px-6 py-10 md:px-12 md:pt-6 md:pb-12 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+      className="rounded-[28px] px-9 py-10 md:px-12 md:pt-6 md:pb-12 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
       style={{ backgroundColor: bg }}
     >
       <div className={`${t.h4} ${lightText ? "text-white" : ""}`}>{tier}</div>
@@ -67,22 +67,22 @@ export default function CourseLevel() {
   return (
     <section className="w-full">
       {/* Scale/1600, side padding 120 */}
-      <div className="mx-auto max-w-[1600px] px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-16 md:py-24">
         {/* Section header */}
-        <div className="mx-auto max-w-[1200px] text-center">
+        <div className="mx-auto max-w-[1200px] text-center pb-12">
             <div
-                className="inline-block rounded-full px-3 py-1 mb-3"
+                className="inline-block rounded-full px-3 py-1 mb-5"
                 style={{ color: "#6B6A70", fontFamily: "Raveo Display, sans-serif",
                  fontWeight: 400, fontSize: "14px", lineHeight: "21px",
                  backgroundColor: "#F0EFF1" }}
             >
             Course Levels Overview
             </div>          
-            <h2 className={`mt-2 ${t.h2}`}>Courses Tailored for Every Stage of <br /> Your Journey</h2>
+            <h2 className={`mt-2 ${t.h2}`}>Courses Tailored for Every <br className="md:hidden block" /> Stage of <br className="md:block hidden" /> Your Journey</h2>
         </div>
 
         {/* Sticky stack (like Elementor) */}
-        <div className="relative mx-auto mt-10 md:mt-16 max-w-[1200px] pb-[40vh]">
+        <div className="relative mx-auto mt-10 md:mt-16 max-w-[1200px] md:pb-[40vh]">
           {items.map((c, i) => {
             const topDesktop = TOPS_DESKTOP[i] ?? "top-[110px]";
             const topMobile  = TOPS_MOBILE[i]  ?? "top-[90px]";

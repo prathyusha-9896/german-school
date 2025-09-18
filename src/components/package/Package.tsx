@@ -8,7 +8,7 @@ const t = {
   caption:
     "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   h2:
-    "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325] text-center md:text-left",
+    "md:text-[40px] text-[28px] leading-[35px] md:leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325] text-center ",
   cardTitle:
     "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif]",
   perk:
@@ -46,7 +46,7 @@ export default function Package() {
 
   return (
     <section className="w-full">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-16 md:py-24">
         {/* Section header */}
         <div className="mx-auto max-w-[1300px] items-center justify-center flex flex-col">
           <div
@@ -59,8 +59,9 @@ export default function Package() {
           >
             Pricing & Packages
           </div>
-          <h2 className={`mt-3 md:mt-4 ${t.h2}`}>
-            Customized Delivery – Your Way
+          <h2 className={`mt-6 md:mt-4 ${t.h2} md:whitespace-nowrap`}>
+            Customized <br className="block md:hidden" />
+            Delivery <span className="hidden md:inline"> - </span>Your Way
           </h2>
         </div>
 

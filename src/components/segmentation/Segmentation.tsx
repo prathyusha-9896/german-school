@@ -8,7 +8,7 @@ const type = {
   caption:
     "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   h1:
-    "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
+    "md:text-[40px] text-[28px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
   item:
     "text-[16px] leading-[24px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   itemBold:
@@ -35,7 +35,7 @@ const Segmentation: React.FC = () => {
   return (
     <section className="w-full">
       {/* Scale/1600, side padding 120, block padding ~64 */}
-      <div className="mx-auto max-w-[1600px] px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-16 md:py-24">
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[568px_minmax(0,1fr)] md:gap-16">
           {/* LEFT: Image (568×436, radius 24) */}
           <div
@@ -63,26 +63,27 @@ const Segmentation: React.FC = () => {
             </div>
 
             {/* Heading (same as LearnMode) */}
-            <h1 className={`mt-4 ${type.h1}`}>Is This Course<br className="hidden md:block" /> Right For You?</h1>
+            <h1 className={`mt-4 ${type.h1}`}>Is This Course<br /> Right For You?</h1>
 
             {/* Points */}
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-1">
               {items.map((it, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="mt-0.5 shrink-0">
                     <RingCheck color={UI.success} />
                   </span>
-                  <p className={`${type.item}`} style={{ color: UI.secondary }}>
+                  <p className={type.item} style={{ color: UI.secondary }}>
                     {it.text}
                   </p>
                 </li>
               ))}
             </ul>
 
+
             {/* CTA */}
             <a
               href={cta.href}
-              className="mt-6 inline-flex items-center gap-2 rounded-[12px] px-4 py-3 text-[14px] font-[600]"
+              className="mt-6 md:w-fit w-full text-center justify-center inline-flex items-center gap-2 rounded-[12px] px-4 py-3 text-[14px] font-[600]"
               style={{
                 background: UI.ctaBg,
                 color: UI.ctaText,

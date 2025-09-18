@@ -11,20 +11,20 @@ export default function Journey() {
   return (
     <section className="relative mx-auto w-full overflow-hidden bg-[#E4F1FE]">
       {/* Header */}
-      <div className="mx-auto max-w-4xl px-6 pt-16 text-center">
+      <div className="mx-auto max-w-4xl px-7 pt-16 text-center">
         <div
           className={`inline-flex bg-[#FFFFFF] text-[#6B6A70] items-center gap-[6px] rounded-[36px] border px-3 py-1 mb-4 `}
         >
           Testimonials
         </div>
-        <h2 className="text-[40px] leading-[50px] font-semibold tracking-tight text-[neutral-900]">
+        <h2 className="md:text-[40px] text-[28px] leading-[35px] md:leading-[50px] font-semibold tracking-tight text-[neutral-900]">
           Our Students’ Journeys
         </h2>
       </div>
 
       {/* Avatar Orbits */}
         <div
-        className="relative mx-auto mt-0 h-[360px] w-full max-w-5xl"
+        className="relative mx-auto mt-0  h-[360px] w-full max-w-5xl"
         style={{ perspective: 1200 }}
         >
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">

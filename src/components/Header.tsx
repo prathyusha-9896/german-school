@@ -61,16 +61,9 @@ export default function Header({
             <button
               type="button"
               onClick={onCtaClick}
-              className="inline-flex h-[48px] w-[186px] items-center justify-center rounded-[8px] px-2 py-3 transition-transform duration-150 hover:translate-y-[-1px] active:translate-y-0"
+              className="inline-flex h-[48px] w-fit items-center justify-center rounded-[8px] px-3 py-3 transition-transform duration-150 hover:translate-y-[-1px] active:translate-y-0 font-semibold md:text-[16px] text-[14px] leading-[24px] text-[#E4F1FE]  "
               style={{
                 backgroundColor: ctaBg,
-                fontFamily: "Raveo Display, sans-serif",
-                fontWeight: 600,
-                fontStyle: "normal",
-                fontSize: "16px",
-                lineHeight: "24px",
-                letterSpacing: "0%",
-                color: "#E4F1FE",
               }}
             >
               {ctaLabel}
@@ -158,7 +151,7 @@ export default function Header({
                 className="mb-3 inline-flex h-12 w-full items-center justify-center rounded-xl font-semibold text-white"
                 style={{ backgroundColor: "#A190FC" }}
               >
-                Book Free Trial Class →
+                Book Free Trial Class 
               </button>
               <a
                 href="#courses"

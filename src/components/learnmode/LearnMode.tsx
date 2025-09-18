@@ -8,7 +8,7 @@ const type = {
   caption:
     "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif]",
   h2:
-    "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
+    "md:text-[40px] text-[28px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
   rowTitle:
     "text-[18px] leading-[27px] font-[600] [font-family:'Raveo_Display',sans-serif]",
   lead:
@@ -37,7 +37,7 @@ export default function LearnMode() {
   return (
     <section className="w-full">
       {/* Scale/1600, side padding 120 */}
-      <div className="mx-auto max-w-[1600px] px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-16 md:py-24">
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_568px] md:gap-16">
           {/* LEFT — Accordion like Level component */}
           <div>
@@ -51,7 +51,7 @@ export default function LearnMode() {
 
             {/* Title */}
             <h2 className={`mt-6 ${type.h2}`}>
-              Choose Your<br className="hidden lg:block" /> Learning Style
+              Choose Your<br /> Learning Style
             </h2>
 
             {/* Rows (accordion) */}

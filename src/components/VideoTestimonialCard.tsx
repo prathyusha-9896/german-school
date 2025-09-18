@@ -145,20 +145,53 @@ export default function VideoTestimonialsRow() {
     },
   ];
 
+  const scrollerStyle: React.CSSProperties = {
+    WebkitOverflowScrolling: "touch",
+    scrollbarWidth: "none",     // Firefox
+    msOverflowStyle: "none",    // IE/Edge
+  };
   return (
-    <section className="w-full bg-[#E4F1FE] py-8">
-      <div className="mx-auto flex justify-center items-center max-w-[1600px] flex-wrap gap-6 px-6">
-        {items.map((it) => (
-          <VideoTestimonialCard
-            key={it.name}
-            name={it.name}
-            videoSrc={it.video}
-            posterSrc={it.poster}
-            verified
-            rating={5}
-          />
-        ))}
+    <section className="w-full bg-[#E4F1FE] pb-10">
+      <div className="mx-auto max-w-[1600px] px-4">
+        {/* Mobile: horizontal scroll, overflow hidden outside */}
+        <div className="relative md:hidden overflow-hidden">
+          <div
+            className="hide-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2"
+            style={scrollerStyle}
+          >
+            {items.map((it) => (
+              <div key={it.name} className="snap-center shrink-0">
+                <VideoTestimonialCard
+                  name={it.name}
+                  videoSrc={it.video}
+                  posterSrc={it.poster}
+                  verified
+                  rating={5}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: regular wrapped grid */}
+        <div className="hidden md:flex flex-wrap items-center justify-center gap-6">
+          {items.map((it) => (
+            <VideoTestimonialCard
+              key={it.name}
+              name={it.name}
+              videoSrc={it.video}
+              posterSrc={it.poster}
+              verified
+              rating={5}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* Hide webkit scrollbar for the mobile scroller */}
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+      `}</style>
     </section>
   );
 }

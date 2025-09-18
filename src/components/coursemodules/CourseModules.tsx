@@ -6,7 +6,7 @@ import useCourseModules from "./useCourseModules";
 /* ...keep your type object exactly as you have it... */
 const type = {
   caption: "text-[14px] leading-[21px] font-[400] [font-family:'Raveo_Display',sans-serif]",
-  h2: "text-[40px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
+  h2: "md:text-[40px] text-[28px] leading-[50px] font-[600] [font-family:'Raveo_Display',sans-serif] text-[#242325]",
   rowTitle: "text-[18px] leading-[27px] font-[600] [font-family:'Raveo_Display',sans-serif]",
   rowDesc: "text-[18px] leading-[27px] font-[400] [font-family:'Raveo_Display',sans-serif]",
 };
@@ -79,10 +79,10 @@ export default function CourseModules() {
 
   return (
     <section className="w-full">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-16 md:py-24">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[568px_minmax(0,1fr)] md:gap-16 items-start">
           {/* LEFT: Image (fixed 568×436) */}
-          <div style={{ isolation: "isolate" }} className="relative flex w-[568px] max-w-full h-[436px] justify-center items-center shrink-0 rounded-[24px] overflow-hidden bg-[#F0EFF1]">
+          <div style={{ isolation: "isolate" }} className="hidden md:block relative flex w-[568px] max-w-full h-[436px] justify-center items-center shrink-0 rounded-[24px] overflow-hidden bg-[#F0EFF1]">
             <img
               key={activeItem.image}
               src={activeItem.image}
@@ -104,7 +104,7 @@ export default function CourseModules() {
             </div>
 
             <h2 className={`mt-4 ${type.h2}`}>
-              What You’ll Learn<br className="hidden md:block" /> in Each Level
+              What You’ll Learn<br /> in Each Level
             </h2>
 
             <div className="mt-6 md:mt-10">
@@ -142,6 +142,17 @@ export default function CourseModules() {
                 );
               })}
             </div>
+          </div>
+          <div style={{ isolation: "isolate" }} className="md:hidden block relative flex w-[568px] max-w-full h-[436px] justify-center items-center shrink-0 rounded-[24px] overflow-hidden bg-[#F0EFF1]">
+            <img
+              key={activeItem.image}
+              src={activeItem.image}
+              alt={activeItem.heading}
+              className="h-full w-full object-cover"
+            />
+
+            {/* Infinite chips carousel */}
+            <MarqueeChips chips={activeItem.chips} bg={activeItem.chipBg} speed={22} />
           </div>
         </div>
       </div>
