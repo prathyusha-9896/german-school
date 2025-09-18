@@ -32,7 +32,7 @@ export function VideoTestimonialCard({
   return (
     <article className="group relative w-[260px] overflow-hidden rounded-2xl bg-black/5 shadow-md ring-1 ring-black/10">
       {/* Media layer */}
-      <div className="relative h-[330px] w-full">
+      <div className="relative h-[380px] w-full">
         {/* Video */}
         <video
           ref={ref}
@@ -120,28 +120,28 @@ export default function VideoTestimonialsRow() {
       poster:
         "/assets/testimonial1.svg",
       video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "/video1.mp4",
     },
     {
       name: "Guy Hawkins",
       poster:
         "/assets/testimonial2.svg",
       video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "/video2.mp4",
     },
     {
       name: "Annette Black",
       poster:
         "/assets/testimonial3.svg",
       video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "/video3.mp4",
     },
     {
       name: "Jenny Wilson",
       poster:
         "/assets/testimonial4.svg",
       video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "/video4.mp4",
     },
   ];
 
