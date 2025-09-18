@@ -1,29 +1,25 @@
 import React from "react";
 import useGerman from "./useGerman";
+
 const avatars: string[] = [
-    "/assets/avatar/Avatar1.svg",
-    "/assets/avatar/Avatar2.svg",
-    "/assets/avatar/Avatar3.svg",
-    "/assets/avatar/Avatar4.svg",
-    "/assets/avatar/1k.svg"
+  "/assets/avatar/Avatar1.svg",
+  "/assets/avatar/Avatar2.svg",
+  "/assets/avatar/Avatar3.svg",
+  "/assets/avatar/Avatar4.svg",
+  "/assets/avatar/1k.svg",
 ];
 
 const RingCheck: React.FC<{ color?: string }> = ({ color = "#3AA376" }) => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
     <circle cx="10" cy="10" r="8" stroke={color} strokeWidth="1.6" />
-    <path
-      d="M6.3 10.1l2.3 2.3L13.7 7.4"
-      stroke={color}
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M6.3 10.1l2.3 2.3L13.7 7.4" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-const Bullet: React.FC<{ children: React.ReactNode; color: string }> = ({ children, color }) => (
+
+const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <li className="flex items-start gap-2">
     <RingCheck />
-    <span className="text-[15px] leading-6">{children}</span>
+    <span className="md:text-[15px] text-[13px] leading-6">{children}</span>
   </li>
 );
 
@@ -31,8 +27,9 @@ const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement> & { error?: st
   <div className="space-y-1">
     <input
       {...props}
-      className={`w-full rounded-lg border bg-white px-3 py-3 text-sm outline-none transition
-      placeholder:opacity-60 ${error ? "border-red-400" : "border-gray-200"} focus:border-gray-400`}
+      className={`w-full rounded-lg border bg-white px-3 py-3 text-sm outline-none transition placeholder:opacity-60 ${
+        error ? "border-red-400" : "border-gray-200"
+      } focus:border-gray-400`}
     />
     {error ? <p className="text-xs text-red-500">{error}</p> : null}
   </div>
@@ -42,8 +39,9 @@ const Textarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement> & { e
   <div className="space-y-1">
     <textarea
       {...props}
-      className={`w-full min-h-[84px] rounded-lg border bg-white px-3 py-3 text-sm outline-none transition
-      placeholder:opacity-60 ${error ? "border-red-400" : "border-gray-200"} focus:border-gray-400`}
+      className={`w-full min-h-[84px] rounded-lg border bg-white px-3 py-3 text-sm outline-none transition placeholder:opacity-60 ${
+        error ? "border-red-400" : "border-gray-200"
+      } focus:border-gray-400`}
     />
     {error ? <p className="text-xs text-red-500">{error}</p> : null}
   </div>
@@ -51,84 +49,95 @@ const Textarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement> & { e
 
 const German: React.FC = () => {
   const { COLORS, content, form, setField, errors, touched, setTouched, handleSubmit, loading } = useGerman();
+
   return (
     <section className="w-full" style={{ background: "linear-gradient(180deg,#EEF2FF,#F7F9FF)" }}>
-      {/* Scale/1700 with 120px side padding */}
-      <div className="mx-auto max-w-[1700px] px-8 md:px-[120px]">
-        {/* Frame max width 1500 (centred). 0px column gap on desktop. */}
-        <div className="mx-auto max-w-[1500px] py-16 grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_620px] md:gap-0">
-          {/* LEFT */}
-          <div className="pr-0 md:pr-[40px]"> {/* light breathing room if needed */}
+      <div className="mx-auto max-w-[1700px] px-6 md:px-[120px]">
+        {/* grid becomes 1 col on mobile (hero centered), 2 cols on md+ */}
+        <div className="mx-auto grid max-w-[1500px] items-start gap-10 py-12 md:grid-cols-[minmax(0,1fr)_620px] md:gap-0 md:py-16">
+          {/* LEFT / HERO */}
+          <div className="mx-auto max-w-[520px] text-center md:mx-0 md:max-w-none md:text-left">
+            {/* badge (like “New – AI Beginner Course Starts Soon”) */}
             <div
               className="mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1"
               style={{ backgroundColor: COLORS.bannerText, color: COLORS.primary }}
             >
-              <span className="text-[12px] font-medium">{content.badge}</span>
+              <div className="bg-[#E0DAFE] inline-flex items-center gap-1 rounded-full px-3 py-1">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                  <circle opacity="0.38" cx="5.5" cy="5.5" r="5" fill="#A190FC"/>
+                  <circle cx="5.5" cy="5.5" r="2" fill="#826BFB"/>
+                </svg>
+              </span>
+              <span className="text-[12px] font-semibold ">New</span>
+              </div>
+              <span className="text-[12px] font-medium text-[#242325]">{content.badge}</span>
             </div>
 
-            <h1 className="text-4xl font-extrabold leading-tight text-black sm:text-5xl">{content.title}</h1>
-            <p className="mt-2 text-2xl font-semibold" style={{ color: COLORS.body }}>
+            <h1 className="text-[28px] leading-[60px] font-semibold text-black sm:text-[32px] md:text-[48px]">
+              {content.title}
+            </h1>
+            <p className="text-[28px] leading-[50px] font-normal text-black sm:text-[32px] md:text-[40px]" style={{ color: COLORS.body }}>
               {content.subtitle}
             </p>
 
-            <p className="mt-4 max-w-xl text-[15px] leading-6" style={{ color: COLORS.body }}>
+            <p className="mt-3 text-[14px] leading-6 md:mt-4 md:max-w-xl" style={{ color: COLORS.body }}>
               {content.description}
             </p>
 
-            {/* CTAs */}
-            <div className="mt-6 flex flex-wrap gap-3">
+            {/* CTAs — full width on mobile like your screenshot */}
+            <div className="mt-5 flex w-full flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
+              <a
+                href="#book"
+                className="inline-flex h-12 w-full items-center justify-center rounded-xl text-sm font-semibold sm:w-auto sm:px-6"
+                style={{ backgroundColor: COLORS.ctaBg, color: COLORS.ctaText, fontFamily: "Raveo Display, sans-serif", fontWeight: 600 }}
+              >
+                {content.ctas.book} <span className="ml-2">→</span>
+              </a>
+
               <a
                 href="#courses"
-                className="rounded-lg px-4 py-3 text-sm font-semibold"
-                style={{ backgroundColor: COLORS.primary, color: COLORS.bannerText }}
+                className="inline-flex h-12 w-full items-center justify-center rounded-xl border text-sm font-semibold sm:w-auto sm:px-6"
+                style={{ borderColor: "#D9DEE7", color: COLORS.primary, backgroundColor: "white" }}
               >
                 {content.ctas.explore}
               </a>
-              <a
-                href="#book"
-                className="inline-flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold"
-                style={{ backgroundColor: COLORS.ctaBg, color: COLORS.ctaText, fontFamily: "Raveo Display, sans-serif", fontWeight: 600 }}
-              >
-                {content.ctas.book} <span>→</span>
-              </a>
             </div>
 
-            {/* Bullets */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {/* Bullets — 2x2 on mobile like the mock */}
+            <div className="mt-6 grid gap-3 grid-cols-2">
               <ul className="space-y-2" style={{ color: COLORS.body }}>
                 {content.bulletsLeft.map((b) => (
-                  <Bullet key={b} color={COLORS.primary}>{b}</Bullet>
+                  <Bullet key={b}>{b}</Bullet>
                 ))}
               </ul>
               <ul className="space-y-2" style={{ color: COLORS.body }}>
                 {content.bulletsRight.map((b) => (
-                  <Bullet key={b} color={COLORS.primary}>{b}</Bullet>
+                  <Bullet key={b}>{b}</Bullet>
                 ))}
               </ul>
             </div>
 
-            {/* Social proof */}
-            <div className="mt-6 flex flex-col items-start gap-3">
-            <div className="flex -space-x-2">
+            {/* Social proof (stacked + centered on mobile) */}
+            <div className="mt-6 flex flex-col items-center gap-3 md:items-start">
+              <div className="flex -space-x-3">
                 {avatars.map((src, i) => (
-                <img
+                  <img
                     key={i}
                     src={src}
                     alt={`Student avatar ${i + 1}`}
-                    className="object-cover"
+                    className="h-8 w-8 rounded-full object-cover ring-2 ring-white"
                     loading={i > 1 ? "lazy" : "eager"}
-                />
+                  />
                 ))}
-            </div>
-            <p className="text-sm" style={{ color: COLORS.body }}>
+              </div>
+              <p className="text-sm" style={{ color: COLORS.body }}>
                 {content.socialProof}
-            </p>
+              </p>
             </div>
           </div>
 
-          {/* RIGHT FRAME (Scale/1500 area) */}
-          <div className="w-full md:w-[620px] md:pl-[40px]">
-            {/* Card sits inside the frame. Approx card width ~800 scale → real 560–600px */}
+          <div className=" w-full md:w-[620px] md:pl-[40px]">
             <div className="mx-auto w-full max-w-[580px] rounded-2xl bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
               <h3 className="text-center text-lg font-semibold text-black">{content.formTitle}</h3>
 
@@ -201,7 +210,6 @@ const German: React.FC = () => {
                   <span>{content.formConsent}</span>
                 </label>
 
-                {/* Scale/1000 button width → full within card */}
                 <button
                   onClick={handleSubmit}
                   disabled={loading}

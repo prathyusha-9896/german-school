@@ -6,14 +6,14 @@ export const COLORS = {
   ctaBg: "#A894FF",       // header button bg
   ctaText: "#E4F1FE",     // header button text
   body: "#6B6A70",        // nav/body text
-  bannerText: "#F0EFF1",  // banner text
+  bannerText: "#FFFFFF",  // banner text
 };
 
 /** ---- Static content (copy lives with the hook for easy edits) ---- */
 export const content = {
   badge: "A1 Beginner Course Starts Soon",
   title: "German Language Courses",
-  subtitle: "From Beginner to Advanced (A1–C2)",
+  subtitle: "From Beginner to Advanced(A1–C2)",
   description:
     "Live online classes with certified German tutors. Flexible schedules, personalized learning, and a free trial class to help you start with confidence.",
   ctas: {
