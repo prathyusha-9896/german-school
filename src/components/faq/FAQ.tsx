@@ -33,11 +33,11 @@ const FAQ: React.FC = () => {
   return (
     <section className="w-full">
       {/* Outer container — Scale/1300, side padding 120 */}
-      <div className="mx-auto max-w-[1500px] px-6 md:px-[120px] py-16 md:py-24">
+      <div className="mx-auto max-w-5xl px-6 md:px-[120px] py-16 md:py-24">
         {/* Header */}
         <div className="text-center">
           <span
-            className={`inline-flex items-center gap-[6px] rounded-[36px] border px-3 py-1 ${T.caption}`}
+            className={`inline-flex items-center gap-[6px] rounded-[36px] border px-6 py-1 ${T.caption}`}
             style={{ borderColor: UI.captionBorder, background: UI.captionBg, color: UI.captionText }}
           >
             FAQs
@@ -48,8 +48,8 @@ const FAQ: React.FC = () => {
         {/* Card container (Scale/1200 inside) */}
         <div className="mx-auto mt-8 md:mt-10 max-w-[1200px]">
           <div
-            className="rounded-2xl border shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden"
-            style={{ background: UI.cardBg, borderColor: UI.cardBorder }}
+            className="rounded-2xl overflow-hidden"
+            style={{ background: UI.cardBg, }}
           >
             {items.map((row, idx) => {
               const open = row.id === openId;
@@ -85,8 +85,22 @@ const FAQ: React.FC = () => {
 
                   {/* Divider (not after last) */}
                   {idx < items.length - 1 && (
-                    <div className="h-px w-full" style={{ background: UI.divider }} />
+                    <div
+                      role="separator"
+                      aria-hidden
+                      className="h-px mx-5 md:mx-8"
+                      style={{
+                        background: `linear-gradient(
+                          90deg,
+                          transparent 0,
+                          ${UI.divider} 8%,
+                          ${UI.divider} 92%,
+                          transparent 100%
+                        )`,
+                      }}
+                    />
                   )}
+
                 </div>
               );
             })}

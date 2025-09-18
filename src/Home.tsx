@@ -11,6 +11,7 @@ import Package from "./components/package/Package";
 import Footer from "./components/Footer";
 import FAQ from "./components/faq/FAQ";
 import FreeClass from "./components/freeclass/FreeClass";
+import Journey from "./components/journey/Journey";
 
 const Home: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const Home: React.FC = () => {
       <LearnMode />
       <Segmentation />
       <Package />
+      <Journey />
       <FreeClass />
       <FAQ />
       <Footer />

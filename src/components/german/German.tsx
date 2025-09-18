@@ -54,7 +54,7 @@ const German: React.FC = () => {
   return (
     <section className="w-full" style={{ background: "linear-gradient(180deg,#EEF2FF,#F7F9FF)" }}>
       {/* Scale/1700 with 120px side padding */}
-      <div className="mx-auto max-w-[1700px] px-[120px]">
+      <div className="mx-auto max-w-[1700px] px-8 md:px-[120px]">
         {/* Frame max width 1500 (centred). 0px column gap on desktop. */}
         <div className="mx-auto max-w-[1500px] py-16 grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_620px] md:gap-0">
           {/* LEFT */}

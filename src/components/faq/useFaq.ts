@@ -31,8 +31,8 @@ export default function useFaq() {
     secondary: "#47464A",
     tertiary: "#6B6A70",
     divider: "#E0DFE3",
-    cardBg: "rgba(240, 241, 245, 0.45)", // subtle translucent neutral
-    cardBorder: "#E0DFE3",
+    cardBg: "#E4F1FE", // subtle translucent neutral
+    // cardBorder: "#E0DFE3",
     captionBg: "#F0EFF1",
     captionBorder: "#E0DFE3",
     captionText: "#6B6A70",
