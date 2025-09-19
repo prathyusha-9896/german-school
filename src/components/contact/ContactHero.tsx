@@ -71,14 +71,14 @@ const ContactHero: React.FC = () => {
 
 
             {/* Bullets — 2x2 on mobile like the mock */}
-            <div className="mt-6 grid gap-2 grid-cols-2 text-[14px] text-[#6B6A70] max-w-[564px] ">
+            {/* <div className="mt-6 grid gap-2 grid-cols-2 text-[14px] text-[#6B6A70] max-w-[564px] ">
                 <div className="flex-col"><p className="font-semibold">Email:</p> info@germanlanguageschool.com</div>
                 <div><p className="font-semibold">Address:</p> German Language School, 123 Learning Street, Pune, India – 411001</div>
                 <div><p className="font-semibold">Phone:</p> +91 98765 43210</div>
-            </div>
+            </div> */}
 
             {/* Social proof (stacked + centered on mobile) */}
-            <div className="mt-6 flex flex-col items-center gap-3 md:items-start">
+            {/* <div className="mt-6 flex flex-col items-center gap-3 md:items-start">
               <div className="flex -space-x-3">
                 {avatars.map((src, i) => (
                   <img
@@ -93,7 +93,7 @@ const ContactHero: React.FC = () => {
               <p className="text-sm" style={{ color: COLORS.body }}>
                 {content.socialProof}
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="relative">
             <div className="absolute -top-20 left-60 animate-bounce ">

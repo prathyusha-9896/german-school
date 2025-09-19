@@ -3,7 +3,6 @@ import React from "react";
 type VideoCardProps = {
   name: string;
   videoSrc: string;
-  posterSrc: string;
   verified?: boolean;
   rating?: number;
 };
@@ -11,13 +10,12 @@ type VideoCardProps = {
 export function VideoTestimonialCard({
   name,
   videoSrc,
-  posterSrc,
   verified = true,
   rating = 5,
 }: VideoCardProps) {
   const ref = React.useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = React.useState(false);
-  const [showPoster, setShowPoster] = React.useState(true);
+  // const [showPoster, setShowPoster] = React.useState(true); // No longer needed
 
   const togglePlay = () => {
     const v = ref.current;
@@ -37,22 +35,22 @@ export function VideoTestimonialCard({
         <video
           ref={ref}
           src={videoSrc}
-          poster={posterSrc}               // still useful for initial paint
           playsInline
           muted={false}
           controls={playing}
           preload="metadata"
-          onPlay={() => { setPlaying(true); setShowPoster(false); }}
-          onPause={() => { setPlaying(false); setShowPoster(true); }}
+          onPlay={() => { setPlaying(true); /* setShowPoster(false); */ }}
+          onPause={() => { setPlaying(false); /* setShowPoster(true); */ }}
           onEnded={() => {
             setPlaying(false);
-            setShowPoster(true);
+            // setShowPoster(true);
             try { if (ref.current) ref.current.currentTime = 0; } catch {}
           }}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        {/* Poster overlay (shows when paused/ended) */}
+        {/* Poster overlay (removed) */}
+        {/*
         <img
           src={posterSrc}
           alt=""
@@ -60,6 +58,7 @@ export function VideoTestimonialCard({
           draggable={false}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 pointer-events-none ${showPoster ? "opacity-100" : "opacity-0"}`}
         />
+        */}
 
         {/* Center play button */}
         {!playing && (
@@ -109,37 +108,28 @@ export function VideoTestimonialCard({
   );
 }
 
-/* ——— Demo row to match your screenshot ——— */
-
-type Item = { name: string; poster: string; video: string };
+// The VideoTestimonialsRow component remains the same
+type Item = { name: string;  video: string };
 
 export default function VideoTestimonialsRow() {
   const items: Item[] = [
     {
       name: "Devon Lane",
-      poster:
-        "/assets/testimonial1.svg",
       video:
         "/video1.mp4",
     },
     {
       name: "Guy Hawkins",
-      poster:
-        "/assets/testimonial2.svg",
       video:
         "/video2.mp4",
     },
     {
       name: "Annette Black",
-      poster:
-        "/assets/testimonial3.svg",
       video:
         "/video3.mp4",
     },
     {
       name: "Jenny Wilson",
-      poster:
-        "/assets/testimonial4.svg",
       video:
         "/video4.mp4",
     },
@@ -147,8 +137,8 @@ export default function VideoTestimonialsRow() {
 
   const scrollerStyle: React.CSSProperties = {
     WebkitOverflowScrolling: "touch",
-    scrollbarWidth: "none",     // Firefox
-    msOverflowStyle: "none",    // IE/Edge
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
   };
   return (
     <section className="w-full bg-[#E4F1FE] pb-10">
@@ -164,7 +154,7 @@ export default function VideoTestimonialsRow() {
                 <VideoTestimonialCard
                   name={it.name}
                   videoSrc={it.video}
-                  posterSrc={it.poster}
+                 
                   verified
                   rating={5}
                 />
@@ -180,7 +170,7 @@ export default function VideoTestimonialsRow() {
               key={it.name}
               name={it.name}
               videoSrc={it.video}
-              posterSrc={it.poster}
+              
               verified
               rating={5}
             />
