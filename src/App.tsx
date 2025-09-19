@@ -3,9 +3,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from './Home';
 import Contact from './Contact';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import PopUp from './components/PopUp';
 function App() {
   return (
     <>
+    <PopUp />
+
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact_us" element={<Contact />} />
