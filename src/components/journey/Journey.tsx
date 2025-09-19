@@ -9,7 +9,7 @@ export default function Journey() {
   const { rings, computeAngles } = useJourney();
 
   return (
-    <section className="relative mx-auto w-full overflow-hidden bg-[#E4F1FE]">
+    <section id="testimonials" className="relative mx-auto w-full overflow-hidden bg-[#E4F1FE]">
       {/* Header */}
       <div className="mx-auto max-w-4xl px-7 pt-16 text-center">
         <div
@@ -18,7 +18,7 @@ export default function Journey() {
           Testimonials
         </div>
         <h2 className="md:text-[40px] text-[28px] leading-[35px] md:leading-[50px] font-semibold tracking-tight text-[neutral-900]">
-          Our Students’ Journeys
+          Our Students’ Stories
         </h2>
       </div>
 

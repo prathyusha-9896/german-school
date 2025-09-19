@@ -40,7 +40,7 @@ function Card({
   lightText?: boolean;
 }) {
   return (
-    <div
+    <div 
       className="rounded-[28px] px-9 py-10 md:px-12 md:pt-6 md:pb-12 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
       style={{ backgroundColor: bg }}
     >
@@ -90,7 +90,7 @@ export default function CourseLevel() {
             const z = 20 + i; // increase with index
 
             return (
-              <div
+              <div id="course"
                 key={c.tier}
                 className={[
                   "sticky",           // pin while scrolling

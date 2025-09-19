@@ -35,7 +35,7 @@ export default function LearnMode() {
   const activeItem = items.find(i => i.id === active)!;
 
   return (
-    <section className="w-full">
+    <section id='benefits' className="w-full">
       {/* Scale/1600, side padding 120 */}
       <div className="mx-auto max-w-[1600px] px-7 md:px-[120px] py-16 md:py-24">
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_568px] md:gap-16">

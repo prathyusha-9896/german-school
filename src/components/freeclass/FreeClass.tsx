@@ -70,7 +70,7 @@ export default function FreeClass() {
             <div className="mt-6">
               <button
                 type="button"
-                onClick={onCta}
+                onClick={() => (window.location.href = "/contact_us")}
                 className={`inline-flex md:w-fit w-full text-center justify-center items-center gap-1 rounded-[8px] px-4 py-3 ${type.cta}`}
                 style={{ background: UI.ctaBg, color: UI.ctaText }}
               >

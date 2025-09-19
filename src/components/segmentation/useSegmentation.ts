@@ -38,7 +38,7 @@ export default function useSegmentation() {
 
   const cta = {
     label: 'Book Free Trial Class →',
-    href: '#book',
+    href: '/contact_us',
   };
 
   return { UI, image, items, cta };

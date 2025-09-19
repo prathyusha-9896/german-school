@@ -1,12 +1,13 @@
 import React from "react";
-import useGerman from "./useGerman";
-
+import useContactHero from "./useContactHero";
+import { DatePicker } from "antd";            
+import dayjs, { type Dayjs } from "dayjs";
 const avatars: string[] = [
-  "/assets/avatar/Avatar1.svg",
-  "/assets/avatar/Avatar2.svg",
-  "/assets/avatar/Avatar3.svg",
-  "/assets/avatar/Avatar4.svg",
-  "/assets/avatar/1k.svg",
+  "/assets/socialicons/Facebook.svg",
+  "/assets/socialicons/Instagram.svg",
+  "/assets/socialicons/LinkedIn.svg",
+  "/assets/socialicons/YouTube.svg",
+  "/assets/socialicons/Twitter.svg",
 ];
 
 const RingCheck: React.FC<{ color?: string }> = ({ color = "#3AA376" }) => (
@@ -47,8 +48,8 @@ const Textarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement> & { e
   </div>
 );
 
-const German: React.FC = () => {
-  const { COLORS, content, form, setField, errors, touched, setTouched, handleSubmit, loading } = useGerman();
+const ContactHero: React.FC = () => {
+  const { COLORS, content, form, setField, errors, touched, setTouched, handleSubmit, loading } = useContactHero();
 
   return (
     <section className="w-full pt-20" style={{ background: "linear-gradient(180deg,#EEF2FF,#F7F9FF)" }}>
@@ -57,65 +58,23 @@ const German: React.FC = () => {
         <div className="mx-auto grid max-w-[1500px] items-start gap-10 py-12 md:grid-cols-[minmax(0,1fr)_620px] md:gap-0 md:py-16">
           {/* LEFT / HERO */}
           <div className="mx-auto max-w-[520px] text-center md:mx-0 md:max-w-none md:text-left">
-            {/* badge (like “New – AI Beginner Course Starts Soon”) */}
-            <div
-              className="mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1"
-              style={{ backgroundColor: COLORS.bannerText, color: COLORS.primary }}
-            >
-              <div className="bg-[#E0DAFE] inline-flex items-center gap-1 rounded-full px-3 py-1">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <circle opacity="0.38" cx="5.5" cy="5.5" r="5" fill="#A190FC"/>
-                  <circle cx="5.5" cy="5.5" r="2" fill="#826BFB"/>
-                </svg>
-              </span>
-              <span className="text-[12px] font-semibold ">New</span>
-              </div>
-              <span className="text-[12px] font-medium text-[#242325]">{content.badge}</span>
-            </div>
-
             <h1 className="text-[28px] leading-[60px] font-semibold text-black sm:text-[32px] md:text-[48px]">
-              {content.title}
+              We are always happy <br />to help
             </h1>
-            <p className="text-[28px] leading-[50px] font-normal text-black sm:text-[32px] md:text-[40px]" style={{ color: COLORS.body }}>
+            {/* <p className="text-[28px] leading-[50px] font-normal text-black sm:text-[32px] md:text-[40px]" style={{ color: COLORS.body }}>
               {content.subtitle}
-            </p>
+            </p> */}
 
             <p className="mt-3 text-[14px] leading-6 md:mt-4 md:max-w-xl" style={{ color: COLORS.body }}>
-              {content.description}
+              Whether you're a prospective student, parent, alumni, or community <br /> member, we value your feedback and are eager to assist you.
             </p>
 
-            {/* CTAs — full width on mobile like your screenshot */}
-            <div className="mt-5 flex w-full flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
-              <a
-                href="/contact_us"
-                className="inline-flex h-12 w-full items-center justify-center rounded-xl text-sm font-semibold sm:w-auto sm:px-6"
-                style={{ backgroundColor: COLORS.ctaBg, color: COLORS.ctaText, fontFamily: "Raveo Display, sans-serif", fontWeight: 600 }}
-              >
-                {content.ctas.book} <span className="ml-2">→</span>
-              </a>
-
-              <a
-                href="#courses"
-                className="inline-flex h-12 w-full items-center justify-center rounded-xl border text-sm font-semibold sm:w-auto sm:px-6"
-                style={{ borderColor: "#D9DEE7", color: COLORS.primary, backgroundColor: "white" }}
-              >
-                {content.ctas.explore}
-              </a>
-            </div>
 
             {/* Bullets — 2x2 on mobile like the mock */}
-            <div className="mt-6 grid gap-3 grid-cols-2">
-              <ul className="space-y-2" style={{ color: COLORS.body }}>
-                {content.bulletsLeft.map((b) => (
-                  <Bullet key={b}>{b}</Bullet>
-                ))}
-              </ul>
-              <ul className="space-y-2" style={{ color: COLORS.body }}>
-                {content.bulletsRight.map((b) => (
-                  <Bullet key={b}>{b}</Bullet>
-                ))}
-              </ul>
+            <div className="mt-6 grid gap-2 grid-cols-2 text-[14px] text-[#6B6A70] max-w-[564px] ">
+                <div className="flex-col"><p className="font-semibold">Email:</p> info@germanlanguageschool.com</div>
+                <div><p className="font-semibold">Address:</p> German Language School, 123 Learning Street, Pune, India – 411001</div>
+                <div><p className="font-semibold">Phone:</p> +91 98765 43210</div>
             </div>
 
             {/* Social proof (stacked + centered on mobile) */}
@@ -126,7 +85,7 @@ const German: React.FC = () => {
                     key={i}
                     src={src}
                     alt={`Student avatar ${i + 1}`}
-                    className="h-8 w-8 rounded-full object-cover "
+                    className=" rounded-full object-cover "
                     loading={i > 1 ? "lazy" : "eager"}
                   />
                 ))}
@@ -179,14 +138,15 @@ const German: React.FC = () => {
                 />
 
                 <div className="grid grid-cols-2 gap-3">
-                  <Input
-                    type="date"
+                    <DatePicker
                     placeholder="Preferred Start Date"
-                    value={form.startDate}
+                    value={form.startDate ? dayjs(form.startDate) : null}
+                    onChange={(value: Dayjs | null) => {
+                        setField("startDate", value ? value.format("YYYY-MM-DD") : "");
+                    }}
                     onBlur={() => setTouched((t) => ({ ...t, startDate: true }))}
-                    onChange={(e) => setField("startDate", e.target.value)}
-                    error={touched.startDate ? errors.startDate : undefined}
-                  />
+                    />
+
                   <Input
                     placeholder="Your City"
                     value={form.city}
@@ -231,4 +191,4 @@ const German: React.FC = () => {
   );
 };
 
-export default German;
+export default ContactHero;

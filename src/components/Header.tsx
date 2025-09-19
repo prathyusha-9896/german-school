@@ -50,24 +50,25 @@ export default function Header({
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden h-10 w-[297px] items-center justify-between text-[16px] font-semibold leading-6 text-[#6B6A70] md:flex">
-            <a href="#courses">Courses</a>
+          <nav className="hidden h-10 w-[397px] items-center justify-between text-[16px] font-semibold leading-6 text-[#6B6A70] md:flex">
+            <a href="#course">Courses</a>
             <a href="#benefits">Benefits</a>
             <a href="#testimonials">Testimonials</a>
+            <a href="/contact_us">Contact</a>
           </nav>
 
           {/* Right side: CTA + hamburger (hamburger shows on mobile) */}
           <div className="flex items-center gap-3">
-            <button
+            <a
               type="button"
-              onClick={onCtaClick}
+              href="/contact_us"
               className="inline-flex h-[48px] w-fit items-center justify-center rounded-[8px] px-3 py-3 transition-transform duration-150 hover:translate-y-[-1px] active:translate-y-0 font-semibold md:text-[16px] text-[14px] leading-[24px] text-[#E4F1FE]  "
               style={{
                 backgroundColor: ctaBg,
               }}
             >
               {ctaLabel}
-            </button>
+            </a>
 
             <button
               type="button"

@@ -31,26 +31,26 @@ export default function usePackage() {
   const plans: Plan[] = [
     {
       id: "one",
-      title: "1 to 1 Class",
+      title: "Regular Programme",
       bg: "#A996FF", // soft purple block
       lightText: true,
       perks: [
-        "Personalized Learning Plan",
-        "1-to-1 Exclusive Plan",
-        "Individual Focus Program",
-        "Dedicated Learning Mode",
+        "1 Hour Daily",
+        "Steady Pace",
+        "Flexible Schedule",
+        "Balanced Progress",
       ],
     },
     {
       id: "super6",
-      title: "Super 6",
+      title: "Super-Intensive Programme",
       bg: "#FFFFFF",
       recommended: true,
       perks: [
-        "Collaborative Learning Plan",
-        "Small Group Program",
-        "6-Student Focus Batch",
-        "Interactive Group Mode",
+        "2+ Hours Daily",
+        "Exam Ready",
+        "Fastest Progress",
+        "Accelerated Learning",
       ],
     },
   ];

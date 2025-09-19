@@ -57,7 +57,7 @@ export default function Package() {
               color: UI.captionText,
             }}
           >
-            Pricing & Packages
+             Learning Pace
           </div>
           <h2 className={`mt-6 md:mt-4 ${t.h2} md:whitespace-nowrap`}>
             Customized <br className="block md:hidden" />
@@ -86,7 +86,7 @@ export default function Package() {
             <h3
               className={`${t.cardTitle} ${
                 plans[0].lightText ? "text-white" : "text-[#242325]"
-              }`}
+              } w-28`}
             >
               {plans[0].title}
             </h3>
@@ -102,15 +102,15 @@ export default function Package() {
               ))}
             </ul>
 
-            <button
-              className="mt-6 w-full rounded-[12px] px-5 py-4 font-[600] transition-transform hover:-translate-y-0.5 active:translate-y-0"
+            <button onClick={() => (window.location.href = "/contact_us")}
+              className="mt-6 w-full rounded-[12px] px-5 py-4 font-[600]"
               style={{
                 background: "#FFFFFF",
                 color: UI.primary,
                 fontFamily: "Raveo Display, sans-serif",
               }}
             >
-              Register for Classes
+              Start Regular Classes
             </button>
           </article>
 
@@ -135,7 +135,7 @@ export default function Package() {
             )}
 
             <h3
-              className={`${t.cardTitle}`}
+              className={`${t.cardTitle} w-96`}
               style={{ color: UI.brand }}
             >
               {plans[1].title}
@@ -152,14 +152,14 @@ export default function Package() {
               ))}
             </ul>
 
-            <button
-              className="mt-6 w-full rounded-[12px] px-5 py-4 font-[600] text-white transition-transform hover:-translate-y-0.5 active:translate-y-0"
+            <button onClick={() => (window.location.href = "/contact_us")}
+              className="mt-6 w-full rounded-[12px] px-5 py-4 font-[600] text-white "
               style={{
                 background: UI.primary,
                 fontFamily: "Raveo Display, sans-serif",
               }}
             >
-              Register for Classes
+              Join Super-Intensive Now
             </button>
 
             {/* subtle card outline to match mock curvature */}

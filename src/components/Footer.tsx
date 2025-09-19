@@ -41,7 +41,7 @@ export default function Footer({
           </h2>
 
           <a
-            href="#book-trial"
+            href="/contact_us"
             className="inline-flex md:w-fit w-full justify-center items-center gap-2 rounded-lg px-5 py-3 text-white text-[15px] font-semibold"
             style={{ backgroundColor: brandSoft, fontFamily: "Raveo Display, sans-serif" }}
           >
@@ -84,7 +84,7 @@ export default function Footer({
                     color: neutralPrimary,
                   }}
                 />
-                <button
+                <button 
                   type="submit"
                   className="absolute right-2 top-2 rounded-lg px-4 py-2 text-white font-semibold"
                   style={{
@@ -111,7 +111,7 @@ export default function Footer({
                 {["Beginner (A1–A2)", "Intermediate (B1–B2)", "Advanced (C1–C2)"].map((t) => (
                   <li key={t}>
                     <a
-                      href="#"
+                      href="/"
                       className="text-[15px] leading-6 hover:underline"
                       style={{ color: neutralSecondary, fontFamily: "Raveo Display, sans-serif" }}
                     >
