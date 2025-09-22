@@ -48,3 +48,17 @@ code {
 /* make it the default everywhere */
 :root { --font-raveo: "Raveo Display", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
 html, body { font-family: var(--font-raveo); }
+
+
+/* Hide Chrome/Edge's built-in dd/mm/yyyy text when empty */
+input[type="date"].date-mask-hidden::-webkit-datetime-edit,
+input[type="date"].date-mask-hidden::-webkit-datetime-edit-year-field,
+input[type="date"].date-mask-hidden::-webkit-datetime-edit-month-field,
+input[type="date"].date-mask-hidden::-webkit-datetime-edit-day-field {
+  color: transparent;
+}
+
+/* Show the date normally once the user focuses/types/selects */
+input[type="date"].date-mask-hidden:focus::-webkit-datetime-edit {
+  color: inherit;
+}

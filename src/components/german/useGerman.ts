@@ -58,6 +58,8 @@ const initial: LeadForm = {
   consent: false,
 };
 
+
+
 export function useGerman() {
   const [form, setForm] = useState<LeadForm>(initial);
   const [loading, setLoading] = useState(false);
@@ -69,6 +71,7 @@ export function useGerman() {
     },
     []
   );
+
 
   const errors = useMemo(() => {
     const e: Partial<Record<keyof LeadForm, string>> = {};
@@ -84,7 +87,9 @@ export function useGerman() {
 
   const hasError = useMemo(() => Object.keys(errors).length > 0, [errors]);
 
+ // ---- single handleSubmit (posts to /api/submit) ----
   const handleSubmit = useCallback(async () => {
+    // mark all as touched
     setTouched({
       firstName: true,
       lastName: true,
@@ -95,19 +100,48 @@ export function useGerman() {
       goals: true,
       consent: true,
     });
+      if (!form.consent) {
+        alert("Please agree to be contacted regarding courses and offers.");
+        return;
+      }
+
     if (hasError) return;
 
     try {
       setLoading(true);
-      // TODO: replace with your API call
-      await new Promise((r) => setTimeout(r, 700));
-      alert("Thanks! We’ll contact you shortly.");
-      setForm(initial);
-      setTouched({});
+
+      const payload = {
+        firstName: form.firstName,
+        lastName: form.lastName,
+        phone: form.phone,
+        email: form.email,
+        startDate: form.startDate,
+        city: form.city,
+        goals: form.goals,
+        consent: form.consent ? "true" : "false",
+        website: "", // honeypot - keep empty
+      };
+
+      const r = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await r.json();
+      if (json?.ok) {
+        alert("Thanks! We’ll contact you shortly.");
+        setForm(initial);
+        setTouched({});
+      } else {
+        alert(json?.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      alert("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
-  }, [hasError]);
+  }, [form, hasError]);
 
   return {
     COLORS,

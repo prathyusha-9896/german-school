@@ -23,19 +23,37 @@ const Bullet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </li>
 );
 
-const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement> & { error?: string }> = ({ error, ...props }) => (
-  <div className="space-y-1">
-    <input
-      {...props}
-      className={`w-full rounded-lg border bg-white px-3 py-3 text-sm outline-none transition placeholder:opacity-60 ${
-        error ? "border-red-400" : "border-gray-200"
-      } focus:border-gray-400`}
-    />
-    {error ? <p className="text-xs text-red-500">{error}</p> : null}
-  </div>
-);
+/** Single Input component with date placeholder overlay */
+const Input: React.FC<
+  React.InputHTMLAttributes<HTMLInputElement> & { error?: string }
+> = ({ error, type, value, placeholder, ...props }) => {
+  const isDate = type === "date";
+  const showOverlay = isDate && !value; // empty date => show our label & hide native mask
+  return (
+    <div className="relative space-y-1">
+      <input
+        {...props}
+        type={type}
+        value={value}
+        placeholder={isDate ? undefined : placeholder}
+        className={`w-full rounded-lg border bg-white px-3 py-3 text-sm outline-none transition placeholder:opacity-60 ${
+          error ? "border-red-400" : "border-gray-200"
+        } focus:border-gray-400 ${showOverlay ? "date-mask-hidden" : ""}`}
+      />
+      {showOverlay && placeholder ? (
+        <span className="pointer-events-none absolute left-3 top-3 text-sm text-gray-400">
+          {placeholder}
+        </span>
+      ) : null}
+      {error ? <p className="text-xs text-red-500">{error}</p> : null}
+    </div>
+  );
+};
 
-const Textarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement> & { error?: string }> = ({ error, ...props }) => (
+
+const Textarea: React.FC<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement> & { error?: string }
+> = ({ error, ...props }) => (
   <div className="space-y-1">
     <textarea
       {...props}
@@ -53,23 +71,21 @@ const German: React.FC = () => {
   return (
     <section className="w-full pt-20" style={{ background: "linear-gradient(180deg,#EEF2FF,#F7F9FF)" }}>
       <div className="mx-auto max-w-[1700px] px-6 md:px-[120px]">
-        {/* grid becomes 1 col on mobile (hero centered), 2 cols on md+ */}
         <div className="mx-auto grid max-w-[1500px] items-start gap-10 py-12 md:grid-cols-[minmax(0,1fr)_620px] md:gap-0 md:py-16">
-          {/* LEFT / HERO */}
+          {/* LEFT */}
           <div className="mx-auto max-w-[520px] text-center md:mx-0 md:max-w-none md:text-left">
-            {/* badge (like “New – AI Beginner Course Starts Soon”) */}
             <div
               className="mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1"
               style={{ backgroundColor: COLORS.bannerText, color: COLORS.primary }}
             >
               <div className="bg-[#E0DAFE] inline-flex items-center gap-1 rounded-full px-3 py-1">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <circle opacity="0.38" cx="5.5" cy="5.5" r="5" fill="#A190FC"/>
-                  <circle cx="5.5" cy="5.5" r="2" fill="#826BFB"/>
-                </svg>
-              </span>
-              <span className="text-[12px] font-semibold ">New</span>
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                    <circle opacity="0.38" cx="5.5" cy="5.5" r="5" fill="#A190FC" />
+                    <circle cx="5.5" cy="5.5" r="2" fill="#826BFB" />
+                  </svg>
+                </span>
+                <span className="text-[12px] font-semibold ">New</span>
               </div>
               <span className="text-[12px] font-medium text-[#242325]">{content.badge}</span>
             </div>
@@ -85,7 +101,6 @@ const German: React.FC = () => {
               {content.description}
             </p>
 
-            {/* CTAs — full width on mobile like your screenshot */}
             <div className="mt-5 flex w-full flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
               <a
                 href="/contact_us"
@@ -104,7 +119,6 @@ const German: React.FC = () => {
               </a>
             </div>
 
-            {/* Bullets — 2x2 on mobile like the mock */}
             <div className="mt-6 grid gap-3 grid-cols-2">
               <ul className="space-y-2" style={{ color: COLORS.body }}>
                 {content.bulletsLeft.map((b) => (
@@ -118,7 +132,6 @@ const German: React.FC = () => {
               </ul>
             </div>
 
-            {/* Social proof (stacked + centered on mobile) */}
             <div className="mt-6 flex flex-col items-center gap-3 md:items-start">
               <div className="flex -space-x-3">
                 {avatars.map((src, i) => (
@@ -126,7 +139,7 @@ const German: React.FC = () => {
                     key={i}
                     src={src}
                     alt={`Student avatar ${i + 1}`}
-                    className="h-8 w-8 rounded-full object-cover "
+                    className="h-8 w-8 rounded-full object-cover"
                     loading={i > 1 ? "lazy" : "eager"}
                   />
                 ))}
@@ -136,95 +149,99 @@ const German: React.FC = () => {
               </p>
             </div>
           </div>
+
+          {/* RIGHT: Form */}
           <div className="relative">
             <div className="absolute -top-20 left-60 animate-bounce ">
-               <img src="/msg.svg" alt="" />
+              <img src="/msg.svg" alt="" />
             </div>
-          <div className=" w-full md:w-[620px] md:pl-[40px] ">
-            <div className="mx-auto w-full max-w-[580px] rounded-2xl bg-white p-6 pt-16 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-              <h3 className="text-center text-lg font-semibold text-black">{content.formTitle}</h3>
 
-              <div className="mt-6 grid grid-cols-1 gap-3">
-                <div className="grid grid-cols-2 gap-3">
+            <div className="w-full md:w-[620px] md:pl-[40px] ">
+              <div className="mx-auto w/full max-w-[580px] rounded-2xl bg-white p-6 pt-16 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+                <h3 className="text-center text-lg font-semibold text-black">{content.formTitle}</h3>
+
+                <div className="mt-6 grid grid-cols-1 gap-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <Input
+                      placeholder="First Name"
+                      value={form.firstName}
+                      onBlur={() => setTouched((t) => ({ ...t, firstName: true }))}
+                      onChange={(e) => setField("firstName", e.target.value)}
+                      error={touched.firstName ? errors.firstName : undefined}
+                    />
+                    <Input
+                      placeholder="Last Name"
+                      value={form.lastName}
+                      onBlur={() => setTouched((t) => ({ ...t, lastName: true }))}
+                      onChange={(e) => setField("lastName", e.target.value)}
+                      error={touched.lastName ? errors.lastName : undefined}
+                    />
+                  </div>
+
                   <Input
-                    placeholder="First Name"
-                    value={form.firstName}
-                    onBlur={() => setTouched((t) => ({ ...t, firstName: true }))}
-                    onChange={(e) => setField("firstName", e.target.value)}
-                    error={touched.firstName ? errors.firstName : undefined}
+                    placeholder="Phone Number"
+                    value={form.phone}
+                    onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+                    onChange={(e) => setField("phone", e.target.value)}
+                    error={touched.phone ? errors.phone : undefined}
                   />
+
                   <Input
-                    placeholder="Last Name"
-                    value={form.lastName}
-                    onBlur={() => setTouched((t) => ({ ...t, lastName: true }))}
-                    onChange={(e) => setField("lastName", e.target.value)}
-                    error={touched.lastName ? errors.lastName : undefined}
+                    placeholder="Email Address"
+                    value={form.email}
+                    onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+                    onChange={(e) => setField("email", e.target.value)}
+                    error={touched.email ? errors.email : undefined}
                   />
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <Input
+                      type="date"
+                      placeholder="Preferred Start Date"
+                      value={form.startDate}
+                      onBlur={() => setTouched((t) => ({ ...t, startDate: true }))}
+                      onChange={(e) => setField("startDate", e.target.value)}
+                      error={touched.startDate ? errors.startDate : undefined}
+                    />
+                    <Input
+                      placeholder="Your City"
+                      value={form.city}
+                      onBlur={() => setTouched((t) => ({ ...t, city: true }))}
+                      onChange={(e) => setField("city", e.target.value)}
+                      error={touched.city ? errors.city : undefined}
+                    />
+                  </div>
+
+                  <Textarea
+                    placeholder="Describe your learning needs"
+                    value={form.goals}
+                    onBlur={() => setTouched((t) => ({ ...t, goals: true }))}
+                    onChange={(e) => setField("goals", e.target.value)}
+                  />
+
+                  <label className="mt-2 flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
+                    <input
+                      type="checkbox"
+                      checked={form.consent}
+                      onChange={(e) => setField("consent", e.target.checked)}
+                      className="mt-1"
+                    />
+                    <span>{content.formConsent}</span>
+                  </label>
+
+                  <button
+                    onClick={handleSubmit}
+                    disabled={loading}
+                    className="mt-2 inline-flex h-12 w-full items-center justify-center rounded-xl font-semibold transition-transform duration-150 hover:translate-y-[-1px] active:translate-y-0 disabled:opacity-60"
+                    style={{ backgroundColor: COLORS.ctaBg, color: COLORS.ctaText, fontFamily: "Raveo Display, sans-serif", fontWeight: 600 }}
+                  >
+                    {loading ? "Submitting..." : content.ctas.submit}
+                  </button>
                 </div>
-
-                <Input
-                  placeholder="Phone Number"
-                  value={form.phone}
-                  onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
-                  onChange={(e) => setField("phone", e.target.value)}
-                  error={touched.phone ? errors.phone : undefined}
-                />
-
-                <Input
-                  placeholder="Email Address"
-                  value={form.email}
-                  onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-                  onChange={(e) => setField("email", e.target.value)}
-                  error={touched.email ? errors.email : undefined}
-                />
-
-                <div className="grid grid-cols-2 gap-3">
-                  <Input
-                    type="date"
-                    placeholder="Preferred Start Date"
-                    value={form.startDate}
-                    onBlur={() => setTouched((t) => ({ ...t, startDate: true }))}
-                    onChange={(e) => setField("startDate", e.target.value)}
-                    error={touched.startDate ? errors.startDate : undefined}
-                  />
-                  <Input
-                    placeholder="Your City"
-                    value={form.city}
-                    onBlur={() => setTouched((t) => ({ ...t, city: true }))}
-                    onChange={(e) => setField("city", e.target.value)}
-                    error={touched.city ? errors.city : undefined}
-                  />
-                </div>
-
-                <Textarea
-                  placeholder="Describe your learning needs"
-                  value={form.goals}
-                  onBlur={() => setTouched((t) => ({ ...t, goals: true }))}
-                  onChange={(e) => setField("goals", e.target.value)}
-                />
-
-                <label className="mt-2 flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
-                  <input
-                    type="checkbox"
-                    checked={form.consent}
-                    onChange={(e) => setField("consent", e.target.checked)}
-                    className="mt-1"
-                  />
-                  <span>{content.formConsent}</span>
-                </label>
-
-                <button
-                  onClick={handleSubmit}
-                  disabled={loading}
-                  className="mt-2 inline-flex h-12 w-full items-center justify-center rounded-xl font-semibold transition-transform duration-150 hover:translate-y-[-1px] active:translate-y-0 disabled:opacity-60"
-                  style={{ backgroundColor: COLORS.ctaBg, color: COLORS.ctaText, fontFamily: "Raveo Display, sans-serif", fontWeight: 600 }}
-                >
-                  {loading ? "Submitting..." : content.ctas.submit}
-                </button>
               </div>
             </div>
           </div>
-          </div>
+          {/* /RIGHT */}
         </div>
       </div>
     </section>
